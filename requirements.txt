@@ -5,5 +5,4 @@ matplotlib
 seaborn
 scikit-learn
 gensim
-pyvi
-re
+pyvi==0.1.1
