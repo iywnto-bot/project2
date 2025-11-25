@@ -56,20 +56,23 @@ def main():
     menu = st.sidebar.radio(
         "Đi đến mục:",
         [
-            "Business Problem",
-            "Evaluation & Report",
-            "Content-Based Recommendation",
+            "Giới thiệu",
+            "Báo cáo đánh giá",
+            "Các phân khúc xe",
+            "Tìm kiếm xe",
             "Thông tin nhóm thực hiện"
         ]
     )
 
     # ---------- BUSINESS PROBLEM ----------
-    if menu == "Business Problem":
-        st.title("📌 Business Problem")
+    if menu == "Giới thiệu":
+        st.title("📌 Giới thiệu tổng quan")
         st.markdown(
             """
             ### Bối cảnh
-            Người mua xe máy cũ gặp nhiều khó khăn vì thị trường đa dạng, giá chênh lệch và thông tin thiếu minh bạch.
+            Người mua xe máy cũ gặp nhiều khó khăn vì thị trường đa dạng, giá chênh lệch và thông tin thiếu minh bạch. nền tảng giao dịch xe uy tín, là cầu nối tin cậy giữa người mua và người bán trên toàn quốc. 
+            Với lợi thế “Dễ tìm - Dễ mua”, Chợ Tốt Xe không ngừng hoàn thiện dịch vụ với thông tin minh bạch, quy trình đăng tin đơn giản và khả năng tìm xe nhanh chóng, đúng nhu cầu.
+            Thị trường xe máy tại Việt Nam đang phát triển mạnh mẽ với sự đa dạng về mẫu mã, phân khúc và thương hiệu, đáp ứng nhu cầu di chuyển ngày càng cao của người tiêu dùng. Tùy thuộc vào sở thích và nhu cầu sử dụng, bạn có thể chọn mua xe theo các phân loại như xe số, xe tay ga, xe côn tay hay xe moto phân khối lớn. Người dùng cũng có thể lựa chọn theo dung tích xe như xe 50cc, xe từ 100 - 175cc,... để phù hợp nhu cầu di chuyển của mình.
 
             ### Mục tiêu dự án
             - Xây dựng hệ thống gợi ý xe máy cũ phù hợp nhu cầu.
@@ -79,7 +82,100 @@ def main():
         )
 
     # ---------- EVALUATION (A + C) ----------
-    elif menu == "Evaluation & Report":
+    elif menu == "Báo cáo đánh giá":
+
+        st.title("Báo cáo mô hình gợi ý dựa trên nội dung và phân cụm")
+
+        st.markdown("""
+        ## 📝 **BÁO CÁO MÔ HÌNH GỢI Ý DỰA TRÊN NỘI DUNG **
+
+        ### 🎯 **1. Mục tiêu hệ thống**
+        Hệ thống được xây dựng nhằm gợi ý các xe máy tương tự dựa trên thông tin mô tả của từng xe. Việc gợi ý **dựa hoàn toàn trên nội dung** của các cột Thương hiệu, Dòng xe, Mô tả chi tiết của các xe đã đăng tải.
+
+        ---
+
+        ### ⚙️ **2. Quy trình xây dựng mô hình**
+
+        #### **2.1. Tiền xử lý dữ liệu**
+        - Làm sạch văn bản: viết thường, loại bỏ ký tự đặc biệt, stopwords.
+        - Chuẩn hóa nội dung mô tả.
+        - Vector hóa dữ liệu phục vụ tính toán.
+
+        #### **2.2. Các phương pháp vector hóa đã thử nghiệm**
+        1. **Gensim TF-IDF**
+        - Sử dụng TF-IDF, tính tương tự bằng Gensim Similarity.
+        - Kết quả khá nhưng tốc độ không tối ưu khi dữ liệu lớn.
+
+        2. **Sklearn TF-IDF + Cosine Similarity**
+        - Tính toán nhanh.
+        - Dễ triển khai, dễ lưu và tải mô hình.
+        - Độ chính xác gợi ý cao và ổn định.
+
+        ---
+
+        ### 📊 **3. Đánh giá mô hình**
+
+        | Tiêu chí | Gensim | Cosine Similarity |
+        |---------|--------|--------------------|
+        | Tốc độ xử lý cho 5 đề xuất| Trung bình 30.6718 giây| **Rất nhanh** 0.0101 giây |
+        | Độ ổn định | Khá | **Tốt** |
+        | Độ chính xác qua đánh giá các nội dung gợi ý và qua giá trị similarity trung bình | Tốt | **Tốt nhất** |
+        """)
+        st.image("sosanh.png")
+        st.markdown("""
+        ---
+
+        ### 🏆 **4. Lý do chọn Cosine làm mô hình chính**
+        - Nhanh, phù hợp dữ liệu lớn.
+        - Độ chính xác gợi ý ổn định.
+        - Phù hợp cho dạng dữ liệu mô tả xe máy.
+
+        ---
+
+        ### 🚀 **5. Kết luận**
+        Trang web sử dụng **TF-IDF + Cosine Similarity** làm mô hình chính vì tính hiệu quả, chính xác và tốc độ cao, đảm bảo trải nghiệm tốt cho người dùng.
+
+        """)
+
+
+
+        st.markdown("""
+        ## 📝 **BÁO CÁO MÔ HÌNH PHÂN CỤM **
+
+        ### 🎯 **1. Mục tiêu hệ thống**
+        Hệ thống được xây dựng nhằm phân cụm xe máy thành các cụm tương đồng dựa trên Thương hiệu, Dòng xe, Số km đi được và Dung tích xe.
+
+        ---
+
+        ### ⚙️ **2. Quy trình xây dựng mô hình**
+
+       """)
+        st.image("Mohinhphancum.png")
+        
+        st.markdown("""
+        ---
+
+        ### 📊 **3. Đánh giá mô hình**
+
+        Theo giá trị Silhouette tính được giữa các mô hình, mô hình trên sklearn cho kết quả tốt hơn trên pyspark và Agglomerative Clustering cho giá trị tốt nhất.
+        """)
+        st.image("DGmohinhphancum.png")
+        st.markdown("""
+        ---
+
+        ### 🏆 **4. Lý do chọn Agglomerative làm mô hình chính**
+        - Giá trị Silhouetter cho ra tốt nhất
+        - Các cụm được phân rõ ràng, không bị chồng lấn.
+
+        ---
+
+        ### 🚀 **5. Kết luận**
+        Trang web sử dụng **Aggomerative** làm mô hình chính vì các cụm được phân rõ ràng.
+
+        """)
+
+    # ---------- EVALUATION (A + C) ----------
+    elif menu == "Các phân khúc xe":
         df_cluster = load_data_cluster()
         X = df_cluster[['Giá', 'Số Km đã đi', 'Dung tích xe_encoded', 'Năm đăng ký']].dropna()
         # chuẩn hóa dữ liệu
@@ -114,8 +210,8 @@ def main():
         st.subheader("📌 Mô tả các cụm (Cluster Summary)")
         st.markdown(
             """
-            **Cụm 0:** Xe có mức giá nhỏ hơn 100tr, quãng đường đã đi < ~300km, dung tích 175cc, phù hợp với nhu cầu thông thường. 
-            **Cụm 1:** Xe giá rẻ, đã đi rất nhiều.  
+            **Cụm 0:** Xe có mức giá nhỏ hơn 100tr, quãng đường đã đi < ~300km, dung tích 175cc, phù hợp với nhu cầu thông thường.  
+            **Cụm 1:** Xe giá rẻ và số km đã đi > 300km.  
             **Cụm 2:** Xe phân khối lớn và giá cao.  
             """
         )
@@ -125,13 +221,28 @@ def main():
         for cl in df_cluster["cluster"].unique():
             ax2.hist(df_cluster[df_cluster.cluster == cl]["Giá"], alpha=0.5, label=f"Cluster {cl}")
         ax2.legend()
+        ax2.set_title("Phân bố Giá theo từng cụm")
+        ax2.set_xlabel("Giá (triệu VNĐ)")
         st.pyplot(fig2)
 
-        st.image("kmcluster.png")
+
+        fig3, ax3 = plt.subplots(figsize=(3, 2))
+        for cl in df_cluster["cluster"].unique():
+            ax3.hist(df_cluster[df_cluster.cluster == cl]["Số Km đã đi"], alpha=0.5, label=f"Cluster {cl}")
+        # đổi nhãn trục hoành sang triệu km
+        xticks = ax3.get_xticks()
+        ax3.set_xticks(xticks)
+        ax3.set_xticklabels([f"{x/1_000_000:.1f}" for x in xticks])
+        ax3.legend()
+        ax3.set_title("Phân bố số km đã đi theo từng cụm")
+        ax3.set_xlabel("Số Km đã đi (triệu km)")
+        st.pyplot(fig3)
+
+
         st.image("namdungtichcluster.png")
 
     # ---------- RECOMMENDATION (B) ----------
-    elif menu == "Content-Based Recommendation":
+    elif menu == "Tìm kiếm xe":
         st.title("🔍 Gợi ý theo Content-Based Filtering")
 
         # --- LOAD DỮ LIỆU ---
@@ -185,7 +296,12 @@ def main():
                 matched = df_cluster[df_cluster['Tiêu đề'] == selected_xe]
                 if len(matched) > 0:
                     cluster_value = matched.iloc[0]['agg_cluster']
-                    st.success(f"🚗 Xe này thuộc **cụm {cluster_value}**")
+                    if cluster_value ==0:
+                        st.success(f"🚗 Xe này thuộc **cụm {cluster_value}**: đa số xe thuộc phân khúc này, bao gồm các dòng xe thông dụng, số km đã đi ở mức trung bình, thuộc xe có phân khối < 175cc")
+                    if cluster_value ==1:
+                        st.success(f"🚗 Xe này thuộc **cụm {cluster_value}**: Bạn đang chọn xe có phân khúc giá thấp, tuy nhiên các xe này đã sử dụng rất nhiều, có số km đi được rất cao ")
+                    if cluster_value ==2:
+                        st.success(f"🚗 Xe này thuộc **cụm {cluster_value}**: Dòng xe bạn chọn khá hiếm và cao cấp, các xe thuộc phân khúc này có quãng đường đi được ít")
                 else:
                     st.warning("⚠ Xe này **không có cụm tương ứng** trong dữ liệu phân cụm.")
 
