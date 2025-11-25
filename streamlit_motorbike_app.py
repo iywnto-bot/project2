@@ -77,7 +77,7 @@ def main():
 
             ### Mục tiêu dự án
             - Xây dựng hệ thống gợi ý xe máy cũ phù hợp nhu cầu.
-            - Sử dụng Content-Based filtering và phân cụm để đưa ra gợi ý.
+            - Sử dụng model gợi ý dựa trên nội dung để đề xuất xe tương tự xe cần tìm và phân cụm nhằm xác định xe thuộc phân khúc nào.
             - Hiển thị phân tích dữ liệu, báo cáo hiệu suất mô hình.
             """
         )
