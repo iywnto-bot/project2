@@ -48,13 +48,14 @@ motorbikes["desc_vec"] = motorbikes.index
 def main():
 
     st.set_page_config(page_title="Motorbike Recommendation", layout="wide")
-
+    st.title("Trung Tâm Tin Học")
+    st.image("xe_may_cu.jpg", caption="Chợ mua bán xe máy cũ")
     # ---------- SIDEBAR WITH LOGO & INFO ----------
-    st.sidebar.image("xe_may_cu.jpg", width=80)
+    st.sidebar.image("xe_may_cu.png", width=80)
     st.sidebar.title("🚀 Menu")
 
     menu = st.sidebar.radio(
-        "Đi đến mục:",
+        "Menu:",
         [
             "Giới thiệu",
             "Báo cáo đánh giá",
