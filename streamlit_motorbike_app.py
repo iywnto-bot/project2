@@ -164,7 +164,7 @@ def main():
         ---
 
         ### 🏆 **4. Lý do chọn Agglomerative làm mô hình chính**
-        - Giá trị Silhouetter cho ra tốt nhất
+        - Giá trị Silhouette cho ra tốt nhất
         - Các cụm được phân rõ ràng, không bị chồng lấn.
 
         ---
@@ -301,7 +301,7 @@ def main():
                     if cluster_value ==1:
                         st.success(f"🚗 Xe này thuộc **cụm {cluster_value}**: Bạn đang chọn xe có phân khúc giá thấp, tuy nhiên các xe này đã sử dụng rất nhiều, có số km đi được rất cao ")
                     if cluster_value ==2:
-                        st.success(f"🚗 Xe này thuộc **cụm {cluster_value}**: Dòng xe bạn chọn khá hiếm và cao cấp, các xe thuộc phân khúc này có quãng đường đi được ít")
+                        st.success(f"🚗 Xe này thuộc **cụm {cluster_value}**: Bạn đang chọn phân khúc xe hiếm và cao cấp, các xe thuộc phân khúc này thường mới và có quãng đường đi ít")
                 else:
                     st.warning("⚠ Xe này **không có cụm tương ứng** trong dữ liệu phân cụm.")
 
