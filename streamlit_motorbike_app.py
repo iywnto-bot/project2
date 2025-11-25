@@ -406,9 +406,8 @@ def main():
             - Nguyễn Ngọc Giao – GUI Project 1
             - Nguyễn Thị Tuyển – GUI Project 2
         
-            ### Liên hệ
-            📧 Email: group@example.com  
-            💻 Github: https://github.com/group
+            ### Ngày thực hiện
+            💻 22/11/2025
             """
         )
 
